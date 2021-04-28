@@ -23,10 +23,14 @@ function App() {
         reminder: false
     }
 ])
+
+const taskDelete = (id) => {
+  setTasks(tasks.filter((task)=>task.id !== id))
+}
   return (
     <div className="App">
       <Header />
-      <AvailableTask tasks={tasks}/>
+      {tasks.length > 0 ? <AvailableTask tasks={tasks} onDelete={taskDelete}/> : 'No Task to Show'}
     </div>
   );
 }
